@@ -1355,6 +1355,33 @@ section { padding: 120px 0; position: relative; }
     animation: ringPulse 3s ease-in-out infinite;
 }
 
+/* Photo avatar — overrides gradient bg + initials sizing */
+.founder-avatar.has-photo {
+    overflow: hidden;
+    background: var(--bg-card);
+    padding: 0;
+}
+.founder-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border-radius: 50%;
+}
+.founder-initials-fallback {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+}
+
 @keyframes ringPulse {
     0%, 100% { transform: scale(1); opacity: 0.5; }
     50% { transform: scale(1.1); opacity: 0.2; }

@@ -139,11 +139,15 @@ function renderLeadership() {
         linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.339 18.337v-8.49H5.667v8.49h2.672zM7.003 8.574a1.548 1.548 0 100-3.096 1.548 1.548 0 000 3.096zm11.335 9.763V13.67c0-2.476-1.34-3.628-3.13-3.628-1.444 0-2.09.793-2.45 1.35v-1.16h-2.717c.036.766 0 8.49 0 8.49h2.717v-4.74c0-.244.018-.488.09-.662.196-.488.642-.992 1.392-.992.982 0 1.375.748 1.375 1.844v4.55h2.723z"/></svg>',
         twitter: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8c-.7.3-1.5.5-2.4.6.8-.5 1.5-1.3 1.8-2.2-.8.5-1.7.8-2.6 1C18 4.4 16.9 4 15.7 4c-2.3 0-4.2 1.9-4.2 4.2 0 .3 0 .6.1 1C8.2 9 5.1 7.4 3 4.9c-.4.7-.6 1.4-.6 2.2 0 1.5.7 2.8 1.9 3.5-.7 0-1.3-.2-1.9-.5v.1c0 2 1.5 3.7 3.4 4.1-.6.2-1.2.2-1.8.1.5 1.7 2 2.9 3.8 2.9-1.4 1.1-3.2 1.8-5.1 1.8H2c1.9 1.2 4.1 1.9 6.4 1.9 7.7 0 11.9-6.4 11.9-11.9v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>'
     };
-    grid.innerHTML = D.leadership.map(p => `
+    grid.innerHTML = D.leadership.map(p => {
+        const avatar = p.photoUrl
+            ? `<img src="${escapeAttr(p.photoUrl)}" alt="${escapeAttr(p.name)}" class="founder-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="founder-initials-fallback" style="display:none;">${escapeHtml(p.initials || '')}</span>`
+            : `<span>${escapeHtml(p.initials || '')}</span>`;
+        return `
         <div class="founder-card reveal">
             <div class="founder-glow"></div>
-            <div class="founder-avatar ${p.colorVariant === 'purple' ? 'founder-avatar-purple' : ''}">
-                <span>${escapeHtml(p.initials || '')}</span>
+            <div class="founder-avatar ${p.colorVariant === 'purple' ? 'founder-avatar-purple' : ''} ${p.photoUrl ? 'has-photo' : ''}">
+                ${avatar}
             </div>
             <h3 class="founder-name">${escapeHtml(p.name || '')}</h3>
             <span class="founder-role">${escapeHtml(p.role || '')}</span>
@@ -153,8 +157,8 @@ function renderLeadership() {
                 <a href="${escapeAttr(p.linkedin || '#')}" class="founder-link" aria-label="LinkedIn" target="_blank" rel="noopener">${socialSvg.linkedin}</a>
                 <a href="${escapeAttr(p.twitter || '#')}" class="founder-link" aria-label="Twitter" target="_blank" rel="noopener">${socialSvg.twitter}</a>
             </div>
-        </div>
-    `).join('');
+        </div>`;
+    }).join('');
 }
 
 // ============ Render: Contact info ============

@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TheHash.io — Company Profile 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============ Print / A4 page setup ============ */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1e293b;
+            background: #ffffff;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 22mm 20mm;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            background: #ffffff;
+        }
+        .page:last-child { page-break-after: auto; }
+
+        /* ============ Color palette ============ */
+        :root {
+            --navy: #0a1628;
+            --navy-2: #142242;
+            --navy-3: #1c2c4f;
+            --cyan: #22d3ee;
+            --cyan-deep: #0891b2;
+            --gold: #c9a36b;
+            --gold-soft: #d8c19a;
+            --text: #1e293b;
+            --text-mid: #475569;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --bg-soft: #f8fafc;
+        }
+
+        /* ============ Reusable typography ============ */
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.5px; }
+        .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: 0.5px; }
+        .eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .gold-line {
+            display: inline-block;
+            width: 50px;
+            height: 1.5px;
+            background: var(--gold);
+            margin: 12px 0 16px;
+        }
+        .section-title {
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .section-subtitle {
+            font-size: 13px;
+            color: var(--text-mid);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* ============ Page header / footer (subtle branding on every page) ============ */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 26px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        .page-header-brand {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700; font-size: 14px;
+            color: var(--navy);
+            letter-spacing: -0.3px;
+        }
+        .page-header-brand .hash-mark {
+            color: var(--cyan-deep);
+            font-size: 18px;
+        }
+        .page-footer {
+            position: absolute;
+            bottom: 12mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+        }
+        .page-footer-number { color: var(--gold); font-weight: 600; }
+
+        /* ============ COVER PAGE ============ */
+        .cover {
+            background: linear-gradient(155deg, #061224 0%, #0a1628 50%, #142242 100%);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            padding: 28mm 22mm;
+            position: relative;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.12), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(201, 163, 107, 0.10), transparent 50%);
+            pointer-events: none;
+        }
+        /* Hexagon decoration pattern */
+        .cover-deco {
+            position: absolute;
+            right: -60px;
+            top: 40%;
+            width: 280px;
+            height: 280px;
+            opacity: 0.15;
+        }
+        .cover-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 2;
+        }
+        .cover-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .cover-logo-mark {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--cyan) 0%, #3b82f6 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #061224;
+            box-shadow: 0 8px 24px rgba(34, 211, 238, 0.3);
+        }
+        .cover-logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .cover-logo-text small { display: block; font-size: 10px; color: var(--gold-soft); letter-spacing: 3px; margin-top: 2px; text-transform: uppercase; font-weight: 400; }
+        .cover-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+        .cover-main {
+            margin-top: auto;
+            margin-bottom: auto;
+            position: relative;
+            z-index: 2;
+        }
+        .cover-eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            display: block;
+        }
+        .cover-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 78px;
+            line-height: 1.05;
+            font-weight: 500;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+        .cover-title .accent {
+            color: var(--cyan);
+            font-style: italic;
+            font-weight: 400;
+        }
+        .cover-title .gold {
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 400;
+        }
+        .cover-tagline {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 380px;
+            font-weight: 300;
+        }
+        .cover-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 22px 0;
+        }
+        .cover-bottom {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .cover-meta {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .cover-meta strong { color: var(--gold); display: block; font-size: 14px; margin-top: 4px; letter-spacing: 0.5px; text-transform: none; font-weight: 500; }
+        .cover-url {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            color: var(--cyan);
+            letter-spacing: 1px;
+        }
+
+        /* ============ ABOUT PAGE ============ */
+        .about-hero {
+            margin-bottom: 32px;
+        }
+        .about-quote {
+            margin-top: 26px;
+            padding: 24px 28px;
+            background: var(--bg-soft);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--navy);
+            font-style: italic;
+        }
+        .about-quote .quote-mark {
+            font-size: 38px;
+            color: var(--gold);
+            line-height: 0.5;
+            margin-right: 4px;
+            vertical-align: -8px;
+        }
+        .pillars {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .pillar {
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--cyan-deep);
+            border-radius: 6px;
+        }
+        .pillar.gold { border-top-color: var(--gold); }
+        .pillar h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--cyan-deep);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .pillar.gold h4 { color: var(--gold); }
+        .pillar p {
+            font-size: 12px;
+            line-height: 1.7;
+            color: var(--text-mid);
+        }
+        .pillar h3 {
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        /* Stats strip */
+        .stats-strip {
+            margin-top: 30px;
+            padding: 22px 24px;
+            background: linear-gradient(135deg, #0a1628 0%, #142242 100%);
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            color: white;
+        }
+        .stat {
+            text-align: center;
+            position: relative;
+        }
+        .stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 10%;
+            bottom: 10%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--cyan), #93c5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* ============ SERVICES PAGE ============ */
+        .services-grid {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .svc {
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .svc-icon {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(59, 130, 246, 0.10));
+            border: 1px solid rgba(34, 211, 238, 0.25);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan-deep);
+        }
+        .svc-icon svg { width: 18px; height: 18px; }
+        .svc h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .svc p {
+            font-size: 10.5px;
+            color: var(--text-mid);
+            line-height: 1.55;
+        }
+
+        /* ============ LEADERSHIP PAGE ============ */
+        .leaders {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .leader {
+            padding: 24px 20px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .leader::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cyan-deep), var(--gold));
+        }
+        .leader-avatar {
+            width: 80px;
+            height: 80px;
+            margin: 8px auto 16px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-3) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--gold);
+            border: 3px solid var(--gold);
+        }
+        .leader.gold-frame .leader-avatar {
+            background: linear-gradient(135deg, var(--gold) 0%, #b08b54 100%);
+            color: var(--navy);
+            border-color: var(--cyan-deep);
+        }
+        .leader h3 {
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .leader-role {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .leader-bio {
+            font-size: 11.5px;
+            color: var(--text-mid);
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+        .leader-contact {
+            font-size: 10px;
+            color: var(--cyan-deep);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============ TECH / PROCESS PAGE ============ */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 26px;
+        }
+        .col h3 {
+            font-size: 16px;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .col-eyebrow {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        .col-divider {
+            width: 30px;
+            height: 1.5px;
+            background: var(--gold);
+            margin: 8px 0 14px;
+        }
+
+        .why-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+        .why-list li {
+            font-size: 11.5px;
+            color: var(--text-mid);
+            line-height: 1.6;
+            padding: 10px 0 10px 26px;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+        .why-list li:last-child { border-bottom: 0; }
+        .why-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            color: var(--gold);
+            font-size: 14px;
+        }
+        .why-list li strong {
+            color: var(--navy);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 2px;
+            font-size: 12.5px;
+        }
+
+        .process {
+            margin-top: 12px;
+        }
+        .step {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .step:last-child { border-bottom: 0; }
+        .step-num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-3));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+        }
+        .step-content h4 {
+            font-size: 13px;
+            color: var(--navy);
+            margin-bottom: 3px;
+        }
+        .step-content p {
+            font-size: 11px;
+            color: var(--text-mid);
+            line-height: 1.55;
+        }
+
+        .tech-chips {
+            margin-top: 26px;
+            padding: 18px;
+            background: var(--bg-soft);
+            border-radius: 8px;
+        }
+        .tech-chips h4 {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+        .chip {
+            font-size: 10.5px;
+            padding: 4px 10px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--navy);
+            font-weight: 500;
+        }
+        .chip.accent { background: var(--navy); color: var(--cyan); border-color: var(--navy); }
+
+        /* ============ CONTACT / BACK COVER ============ */
+        .back-cover {
+            background: linear-gradient(155deg, #061224 0%, #0a1628 60%, #142242 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30mm 22mm;
+            position: relative;
+        }
+        .back-cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.10), transparent 50%),
+                radial-gradient(circle at 20% 20%, rgba(201, 163, 107, 0.08), transparent 50%);
+            pointer-events: none;
+        }
+        .back-main {
+            position: relative; z-index: 2;
+            text-align: center;
+            margin: auto 0;
+        }
+        .back-eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10px;
+            letter-spacing: 5px;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .back-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            line-height: 1.1;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .back-title .gold { color: var(--gold); font-style: italic; font-weight: 400; }
+        .back-title .cyan { color: var(--cyan); font-style: italic; font-weight: 400; }
+        .back-sub {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 420px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+        }
+        .back-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto 32px;
+        }
+        .back-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .back-contact-card {
+            padding: 16px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            text-align: left;
+        }
+        .back-contact-label {
+            font-size: 9px;
+            color: var(--gold);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .back-contact-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            color: white;
+            font-weight: 500;
+        }
+        .back-bottom {
+            position: relative; z-index: 2;
+            text-align: center;
+        }
+        .back-bottom-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+        }
+        .back-bottom-brand .dot {
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============ PAGE 1: COVER ============ -->
+<section class="page cover">
+    <div class="cover-top">
+        <div class="cover-logo">
+            <div class="cover-logo-mark">#</div>
+            <div class="cover-logo-text">
+                TheHash.io
+                <small>Pvt Ltd</small>
+            </div>
+        </div>
+        <div class="cover-year">2026</div>
+    </div>
+
+    <svg class="cover-deco" viewBox="0 0 200 200" fill="none">
+        <polygon points="100,10 173,55 173,145 100,190 27,145 27,55" stroke="#22d3ee" stroke-width="1" fill="none"/>
+        <polygon points="100,40 146,67 146,123 100,150 54,123 54,67" stroke="#c9a36b" stroke-width="1" fill="none"/>
+        <polygon points="100,70 119,80 119,110 100,120 81,110 81,80" stroke="#22d3ee" stroke-width="1" fill="none"/>
+        <circle cx="100" cy="95" r="4" fill="#c9a36b"/>
+    </svg>
+
+    <div class="cover-main">
+        <span class="cover-eyebrow">Company Profile</span>
+        <h1 class="cover-title">
+            Building the<br>
+            <span class="accent">Decentralized</span><br>
+            <span class="gold">Future.</span>
+        </h1>
+        <div class="cover-divider"></div>
+        <p class="cover-tagline">
+            Blockchain platforms, smart contracts, modern web &amp; mobile applications — engineered for the future of digital business.
+        </p>
+    </div>
+
+    <div class="cover-bottom">
+        <div class="cover-meta">
+            Prepared by
+            <strong>TheHash.io Pvt Ltd</strong>
+        </div>
+        <div class="cover-url">thehash.io</div>
+    </div>
+</section>
+
+<!-- ============ PAGE 2: ABOUT ============ -->
+<section class="page">
+    <div class="page-header">
+        <div class="page-header-brand"><span class="hash-mark">#</span> TheHash.io</div>
+        <div style="font-size:11px; color:var(--text-light); letter-spacing:1px;">COMPANY PROFILE — 2026</div>
+    </div>
+
+    <div class="about-hero">
+        <span class="eyebrow">About Us</span>
+        <span class="gold-line"></span>
+        <h2 class="section-title">Powering the <em style="font-family:'Cormorant Garamond', serif; font-weight:500; color:var(--cyan-deep);">Digital</em> Future</h2>
+        <p class="section-subtitle">
+            TheHash.io is a full-service technology company delivering blockchain platforms, smart contracts, modern websites and mobile applications. We bridge the gap between traditional business and Web3 innovation through production-grade engineering, secure architectures, and a relentless focus on quality.
+        </p>
+    </div>
+
+    <div class="about-quote">
+        <span class="quote-mark">"</span>
+        We believe blockchain is more than a technology trend — it is the foundation of how trust, value, and ownership will move across the internet for the next century. Our work is to make that future production-ready, today.
+    </div>
+
+    <div class="pillars">
+        <div class="pillar">
+            <h4>Our Vision</h4>
+            <h3>An open, programmable economy.</h3>
+            <p>To accelerate the adoption of decentralized technology by building secure, beautifully-engineered products that businesses and users can actually rely on.</p>
+        </div>
+        <div class="pillar gold">
+            <h4>Our Mission</h4>
+            <h3>Engineering that scales globally.</h3>
+            <p>To partner with founders and enterprises to ship blockchain platforms, web applications, and mobile products that are secure by design and built to last.</p>
+        </div>
+    </div>
+
+    <div class="stats-strip">
+        <div class="stat">
+            <div class="stat-num">150+</div>
+            <div class="stat-label">Smart Contracts</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">50+</div>
+            <div class="stat-label">Global Clients</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">99%</div>
+            <div class="stat-label">Security Score</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Expert Support</div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span>thehash.io — Company Profile</span>
+        <span class="page-footer-number">02</span>
+    </div>
+</section>
+
+<!-- ============ PAGE 3: SERVICES (PART 1) ============ -->
+<section class="page">
+    <div class="page-header">
+        <div class="page-header-brand"><span class="hash-mark">#</span> TheHash.io</div>
+        <div style="font-size:11px; color:var(--text-light); letter-spacing:1px;">COMPANY PROFILE — 2026</div>
+    </div>
+
+    <span class="eyebrow">What We Deliver</span>
+    <span class="gold-line"></span>
+    <h2 class="section-title">Our <em style="font-family:'Cormorant Garamond', serif; font-weight:500; color:var(--cyan-deep);">Services</em></h2>
+    <p class="section-subtitle">End-to-end blockchain, web and mobile solutions tailored to your business needs.</p>
+
+    <div class="services-grid">
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
+            </div>
+            <div>
+                <h4>Smart Contract Development</h4>
+                <p>Custom-built, gas-optimized contracts on Solidity, Rust and Move with comprehensive test coverage.</p>
+            </div>
+        </div>
+
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <div>
+                <h4>Solidity Development</h4>
+                <p>Expert Solidity engineering across all EVM chains — Ethereum, BSC, Polygon, Arbitrum, Base.</p>
+            </div>
+        </div>
+
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L4 7v5c0 5 4 8 8 9 4-1 8-4 8-9V7l-8-4z"/></svg>
+            </div>
+            <div>
+                <h4>Security Audits</h4>
+                <p>Rigorous manual and automated audits to protect contracts from vulnerabilities and exploits.</p>
+            </div>
+        </div>
+
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+            </div>
+            <div>
+                <h4>DApp Development</h4>
+                <p>Full-stack decentralized applications with seamless Web3 wallet integrations and intuitive UX.</p>
+            </div>
+        </div>
+
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M6.5 7l4 3.5M17.5 7l-4 3.5M6.5 17l4-3.5M17.5 17l-4-3.5"/></svg>
+            </div>
+            <div>
+                <h4>DeFi Solutions</h4>
+                <p>DEXs, AMMs, lending and yield protocols, cross-chain bridges — production-grade DeFi infrastructure.</p>
+            </div>
+        </div>
+
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 14h3M12 14h5"/></svg>
+            </div>
+            <div>
+                <h4>NFT Marketplaces</h4>
+                <p>Scalable NFT platforms with minting, royalties, lazy minting and multi-chain support.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span>thehash.io — Company Profile</span>
+        <span class="page-footer-number">03</span>
+    </div>
+</section>
+
+<!-- ============ PAGE 4: SERVICES (PART 2) + TECH STACK ============ -->
+<section class="page">
+    <div class="page-header">
+        <div class="page-header-brand"><span class="hash-mark">#</span> TheHash.io</div>
+        <div style="font-size:11px; color:var(--text-light); letter-spacing:1px;">COMPANY PROFILE — 2026</div>
+    </div>
+
+    <span class="eyebrow">Beyond Blockchain</span>
+    <span class="gold-line"></span>
+    <h2 class="section-title">Full-Stack <em style="font-family:'Cormorant Garamond', serif; font-weight:500; color:var(--cyan-deep);">Capabilities</em></h2>
+    <p class="section-subtitle">Web, mobile and design — engineered under one roof.</p>
+
+    <div class="services-grid">
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12c4-4 14-4 18 0M3 12c4 4 14 4 18 0"/></svg>
+            </div>
+            <div>
+                <h4>Blockchain Consulting</h4>
+                <p>Strategic Web3 roadmaps, tokenomics design, architecture planning and compliance guidance.</p>
+            </div>
+        </div>
+
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M9 22h6M12 18v4"/></svg>
+            </div>
+            <div>
+                <h4>Web Development</h4>
+                <p>High-performance websites &amp; web platforms built with React, Next.js, Vue — optimized for speed &amp; SEO.</p>
+            </div>
+        </div>
+
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 19h2"/></svg>
+            </div>
+            <div>
+                <h4>Mobile App Development</h4>
+                <p>Native &amp; cross-platform iOS / Android apps with React Native and Flutter — App Store deployment included.</p>
+            </div>
+        </div>
+
+        <div class="svc">
+            <div class="svc-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l12 8-6 2-2 6L6 4z"/></svg>
+            </div>
+            <div>
+                <h4>UI / UX Design</h4>
+                <p>Beautiful, intuitive interfaces — user research, wireframing, prototyping and brand identity.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tech-chips">
+        <h4>Our Tech Stack</h4>
+        <div class="chip-row">
+            <span class="chip accent">Solidity</span>
+            <span class="chip accent">Rust</span>
+            <span class="chip accent">Move</span>
+            <span class="chip">Hardhat</span>
+            <span class="chip">Foundry</span>
+            <span class="chip">OpenZeppelin</span>
+            <span class="chip">Ethers.js</span>
+            <span class="chip">Web3.js</span>
+        </div>
+        <div class="chip-row">
+            <span class="chip">React</span>
+            <span class="chip">Next.js</span>
+            <span class="chip">Vue.js</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">React Native</span>
+            <span class="chip">Flutter</span>
+            <span class="chip">Swift</span>
+            <span class="chip">Kotlin</span>
+        </div>
+        <div class="chip-row">
+            <span class="chip">Ethereum</span>
+            <span class="chip">Polygon</span>
+            <span class="chip">BSC</span>
+            <span class="chip">Arbitrum</span>
+            <span class="chip">Base</span>
+            <span class="chip">Solana</span>
+            <span class="chip">IPFS</span>
+            <span class="chip">The Graph</span>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span>thehash.io — Company Profile</span>
+        <span class="page-footer-number">04</span>
+    </div>
+</section>
+
+<!-- ============ PAGE 5: LEADERSHIP ============ -->
+<section class="page">
+    <div class="page-header">
+        <div class="page-header-brand"><span class="hash-mark">#</span> TheHash.io</div>
+        <div style="font-size:11px; color:var(--text-light); letter-spacing:1px;">COMPANY PROFILE — 2026</div>
+    </div>
+
+    <span class="eyebrow">Leadership</span>
+    <span class="gold-line"></span>
+    <h2 class="section-title">Built by <em style="font-family:'Cormorant Garamond', serif; font-weight:500; color:var(--cyan-deep);">Visionaries</em></h2>
+    <p class="section-subtitle">A senior team with deep expertise across blockchain architecture, full-stack engineering and product design.</p>
+
+    <div class="leaders">
+        <div class="leader">
+            <div class="leader-avatar">MI</div>
+            <h3>Mudaser Iqbal</h3>
+            <div class="leader-role">Founder &amp; Entrepreneur</div>
+            <p class="leader-bio">
+                Visionary leader driving blockchain innovation at TheHash.io. Passionate about building decentralized solutions that empower businesses worldwide.
+            </p>
+            <div class="leader-contact">mudaseriqbal@gmail.com</div>
+        </div>
+
+        <div class="leader gold-frame">
+            <div class="leader-avatar">MI</div>
+            <h3>Mubashir Iqbal</h3>
+            <div class="leader-role">Director</div>
+            <p class="leader-bio">
+                Strategic director leading operations and growth at TheHash.io. Bridging technology and business to deliver world-class blockchain solutions.
+            </p>
+            <div class="leader-contact">mubashir2009@gmail.com</div>
+        </div>
+    </div>
+
+    <div style="margin-top:34px;">
+        <span class="eyebrow">What Sets Us Apart</span>
+        <span class="gold-line"></span>
+        <ul class="why-list">
+            <li>
+                <strong>Senior-Only Engineering</strong>
+                Every project is led by senior architects with hands-on blockchain &amp; full-stack experience — no junior hand-offs.
+            </li>
+            <li>
+                <strong>Security First, Always</strong>
+                Multi-layer audits, formal verification and rigorous test coverage built into our delivery pipeline.
+            </li>
+            <li>
+                <strong>Full-Stack Under One Roof</strong>
+                Blockchain, web, mobile and design — coordinated end-to-end so projects ship faster and cheaper.
+            </li>
+            <li>
+                <strong>Transparent Partnership</strong>
+                Direct access to the team, weekly demos and open architecture decisions. No black-box delivery.
+            </li>
+        </ul>
+    </div>
+
+    <div class="page-footer">
+        <span>thehash.io — Company Profile</span>
+        <span class="page-footer-number">05</span>
+    </div>
+</section>
+
+<!-- ============ PAGE 6: PROCESS ============ -->
+<section class="page">
+    <div class="page-header">
+        <div class="page-header-brand"><span class="hash-mark">#</span> TheHash.io</div>
+        <div style="font-size:11px; color:var(--text-light); letter-spacing:1px;">COMPANY PROFILE — 2026</div>
+    </div>
+
+    <span class="eyebrow">How We Work</span>
+    <span class="gold-line"></span>
+    <h2 class="section-title">Our <em style="font-family:'Cormorant Garamond', serif; font-weight:500; color:var(--cyan-deep);">Engagement</em> Process</h2>
+    <p class="section-subtitle">A clear, disciplined process from discovery to launch — and beyond.</p>
+
+    <div class="process" style="margin-top:24px;">
+        <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+                <h4>Discovery &amp; Architecture</h4>
+                <p>Free initial consultation to understand goals, constraints and risk profile. We produce a written architecture document, technology recommendation, timeline and fixed cost estimate.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+                <h4>Sprint-Based Development</h4>
+                <p>2-week sprints with weekly demos and a working preview environment. Code in your repository from day one. Daily Slack / WhatsApp access to the engineering lead.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+                <h4>Security &amp; QA</h4>
+                <p>Internal multi-pass audit on all smart contracts, end-to-end test suite for application code, and optional independent third-party audit before mainnet launch.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+                <h4>Launch &amp; Ongoing Support</h4>
+                <p>Production deployment with monitoring, incident response playbook and a dedicated support channel. Retainer-based support available for continuous evolution.</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:28px; padding:20px 22px; background:linear-gradient(135deg, var(--bg-soft) 0%, #ffffff 100%); border:1px solid var(--border); border-left:3px solid var(--gold); border-radius:6px;">
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px;">Industries We Serve</div>
+        <div style="font-size:12px; color:var(--text-mid); line-height:1.7;">
+            DeFi protocols · NFT marketplaces · GameFi studios · Web3 startups · Enterprise blockchain · Fintech · E-commerce · SaaS platforms
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <span>thehash.io — Company Profile</span>
+        <span class="page-footer-number">06</span>
+    </div>
+</section>
+
+<!-- ============ PAGE 7: BACK COVER / CONTACT ============ -->
+<section class="page back-cover">
+    <div class="back-main">
+        <div class="back-eyebrow">Let's Build Together</div>
+        <h2 class="back-title">
+            Your<br>
+            <span class="cyan">Decentralized</span><br>
+            <span class="gold">Future</span> starts here.
+        </h2>
+        <p class="back-sub">
+            Whether you're launching a token, building a marketplace, or migrating your enterprise to Web3 — we'd love to hear about your project.
+        </p>
+        <div class="back-divider"></div>
+
+        <div class="back-contact-grid">
+            <div class="back-contact-card">
+                <div class="back-contact-label">Website</div>
+                <div class="back-contact-value">thehash.io</div>
+            </div>
+            <div class="back-contact-card">
+                <div class="back-contact-label">General</div>
+                <div class="back-contact-value">info@thehash.io</div>
+            </div>
+            <div class="back-contact-card">
+                <div class="back-contact-label">Founder</div>
+                <div class="back-contact-value">mudaseriqbal@gmail.com</div>
+            </div>
+            <div class="back-contact-card">
+                <div class="back-contact-label">Director</div>
+                <div class="back-contact-value">mubashir2009@gmail.com</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-bottom">
+        <div class="back-bottom-brand">
+            TheHash.io Pvt Ltd <span class="dot">·</span> Company Profile 2026 <span class="dot">·</span> thehash.io
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

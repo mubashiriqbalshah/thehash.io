@@ -82,20 +82,22 @@ const DEFAULT_DATA = {
     leadership: [
         {
             initials: 'MI',
+            photoUrl: 'mudaser.jpg',
             name: 'Mudaser Iqbal',
             role: 'Founder & Entrepreneur',
             bio: 'Visionary leader driving blockchain innovation at TheHash.io. Passionate about building decentralized solutions that empower businesses worldwide.',
-            email: 'founder@thehash.io',
+            email: 'mudaseriqbal@gmail.com',
             linkedin: '#',
             twitter: '#',
             colorVariant: 'cyan'
         },
         {
             initials: 'MI',
+            photoUrl: 'mubashir.jpg',
             name: 'Mubashir Iqbal',
             role: 'Director',
             bio: 'Strategic director leading operations and growth at TheHash.io. Bridging technology and business to deliver world-class blockchain solutions.',
-            email: 'director@thehash.io',
+            email: 'mubashir2009@gmail.com',
             linkedin: '#',
             twitter: '#',
             colorVariant: 'purple'
@@ -156,6 +158,15 @@ function loadSiteData() {
         }
         if (merged.contact && !merged.contact.formPrimaryEmail) {
             merged.contact.formPrimaryEmail = DEFAULT_DATA.contact.formPrimaryEmail;
+        }
+        // Migration: backfill founder photoUrl from defaults if missing
+        if (Array.isArray(merged.leadership)) {
+            merged.leadership.forEach(p => {
+                if (typeof p.photoUrl !== 'string') {
+                    const def = DEFAULT_DATA.leadership.find(d => d.name === p.name);
+                    p.photoUrl = def?.photoUrl || '';
+                }
+            });
         }
         return merged;
     } catch (e) {

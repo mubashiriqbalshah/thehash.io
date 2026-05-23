@@ -511,6 +511,10 @@ function renderLeadershipPanel() {
                     <div class="form-group"><label>Name</label><input type="text" data-f="name"></div>
                     <div class="form-group"><label>Role</label><input type="text" data-f="role"></div>
                 </div>
+                <div class="form-group">
+                    <label>Photo (filename or URL — leave empty for initials avatar)</label>
+                    <input type="text" data-f="photoUrl" placeholder="mudaser.jpg or https://...">
+                </div>
                 <div class="form-group"><label>Bio</label><textarea data-f="bio" rows="2"></textarea></div>
                 <div class="form-row-3">
                     <div class="form-group"><label>Email</label><input type="email" data-f="email"></div>
