@@ -693,7 +693,8 @@ function renderSettingsPanel() {
         setStoredPassword(a);
         wrap.querySelector('#newPw').value = '';
         wrap.querySelector('#confirmPw').value = '';
-        showToast('Password updated');
+        showToast('Password updated — re-login required');
+        setTimeout(() => { setLoggedIn(false); showLogin(); }, 1200);
     });
     wrap.querySelector('#exportBtn').addEventListener('click', () => {
         const blob = new Blob([JSON.stringify(window.SITE_DATA, null, 2)], { type: 'application/json' });

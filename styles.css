@@ -1585,6 +1585,43 @@ section { padding: 120px 0; position: relative; }
     .logo-mark { height: 60px; }
     .navbar.scrolled .logo-mark { height: 52px; }
 
+    /* Mobile open state — slides down from navbar */
+    .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 16px;
+        right: 16px;
+        padding: 10px;
+        border-radius: 18px;
+        background: rgba(10, 10, 14, 0.92);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+        animation: mobileMenuIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    [data-theme="light"] .nav-links.mobile-open {
+        background: rgba(255, 255, 255, 0.95);
+        border-color: rgba(15, 23, 42, 0.08);
+    }
+    .nav-links.mobile-open a {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 14px 18px;
+        font-size: 15px;
+    }
+    .nav-links.mobile-open .nav-indicator { display: none; }
+    @keyframes mobileMenuIn {
+        from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     .about-grid,
     .contact-grid,
     .leadership-grid {

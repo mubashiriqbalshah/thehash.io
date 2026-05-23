@@ -306,6 +306,11 @@ let isHovering = false;
 
 function moveIndicatorTo(linkEl) {
     if (!linkEl || !navIndicator || !navLinksWrap) return;
+    // Skip on mobile / when nav is hidden (offsetWidth === 0)
+    if (navLinksWrap.offsetWidth === 0) {
+        navIndicator.classList.remove('visible');
+        return;
+    }
     const wrapRect = navLinksWrap.getBoundingClientRect();
     const linkRect = linkEl.getBoundingClientRect();
     navIndicator.style.left = (linkRect.left - wrapRect.left) + 'px';
@@ -549,8 +554,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         if (href === '#' || href.length < 2) return;
-        const target = document.querySelector(href);
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        let target;
+        try { target = document.querySelector(href); } catch { return; }
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Close mobile menu if open
+            const nl = document.querySelector('.nav-links');
+            const mt = document.getElementById('menuToggle');
+            if (nl?.classList.contains('mobile-open')) {
+                nl.classList.remove('mobile-open');
+                mt?.classList.remove('is-open');
+            }
+        }
     });
 });
 
@@ -606,7 +622,7 @@ if (contactForm) {
         try {
             if ((provider === 'formspree' || provider === 'web3forms') && endpoint) {
                 const body = provider === 'web3forms'
-                    ? { access_key: endpoint, ...payload, from_name: payload.name, subject: payload.subject, ...(ccEmails ? { cc: ccEmails } : {}) }
+                    ? { access_key: endpoint, ...payload, from_name: payload.name, ...(ccEmails ? { cc: ccEmails } : {}) }
                     : payload;
                 const url = provider === 'web3forms' ? 'https://api.web3forms.com/submit' : endpoint;
                 const res = await fetch(url, {
@@ -642,7 +658,10 @@ if (contactForm) {
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.querySelector('.nav-links');
 if (menuToggle) {
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('mobile-open'));
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('mobile-open');
+        menuToggle.classList.toggle('is-open');
+    });
 }
 
 // ============ Parallax effect on hero ============
