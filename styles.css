@@ -674,9 +674,21 @@ img { max-width: 100%; display: block; }
 }
 
 .btn-block {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
-    width: 100%;
+    min-width: 220px;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.contact-form .btn-block {
+    align-self: center;
+    margin: 6px auto 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
 }
 
 /* ========== Slider Controls ========== */
