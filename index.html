@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheHash.io — Blockchain, Web & Mobile App Development</title>
+    <meta name="description" content="TheHash.io builds blockchain platforms, smart contracts, websites and mobile apps that power the digital future.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <div class="logo-mark">
+                    <img src="logo.png" alt="TheHash.io Logo" class="logo-img logo-dark">
+                    <img src="logo-light.png" alt="TheHash.io Logo" class="logo-img logo-light">
+                </div>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <span class="nav-indicator" id="navIndicator"></span>
+                <li><a href="#home"><span class="nav-dot"></span>Home</a></li>
+                <li><a href="#about"><span class="nav-dot"></span>About</a></li>
+                <li><a href="#services"><span class="nav-dot"></span>Services</a></li>
+                <li><a href="#clients"><span class="nav-dot"></span>Clients</a></li>
+                <li><a href="#contact"><span class="nav-dot"></span>Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"/>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <a href="#get-in-touch" class="nav-cta">Get Started</a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Slider -->
+    <section id="home" class="hero">
+        <div class="slider" id="slider"><!-- Rendered from SITE_DATA.slides --></div>
+
+        <!-- Slider Controls -->
+        <button class="slider-arrow slider-prev" id="prevBtn" aria-label="Previous slide">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <button class="slider-arrow slider-next" id="nextBtn" aria-label="Next slide">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+
+        <div class="slider-dots" id="dots"><!-- Rendered from slides count --></div>
+
+        <div class="scroll-indicator">
+            <div class="mouse"><div class="wheel"></div></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid" id="statsGrid"><!-- Rendered from SITE_DATA.stats --></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content reveal" id="aboutContent"><!-- Rendered from SITE_DATA.about --></div>
+
+                <div class="about-visual reveal">
+                    <div class="visual-card">
+                        <div class="card-glow"></div>
+                        <div class="hexagon-container">
+                            <div class="hex hex-1"></div>
+                            <div class="hex hex-2"></div>
+                            <div class="hex hex-3"></div>
+                            <div class="hex hex-4"></div>
+                            <div class="hex hex-5"></div>
+                            <div class="hex hex-6"></div>
+                            <div class="hex-center">
+                                <svg viewBox="0 0 60 60" fill="none">
+                                    <path d="M30 5L52 17V41L30 53L8 41V17L30 5Z" stroke="url(#hexGrad)" stroke-width="2.5"/>
+                                    <path d="M22 22H38M22 30H38M22 38H32" stroke="url(#hexGrad)" stroke-width="2.5" stroke-linecap="round"/>
+                                    <defs>
+                                        <linearGradient id="hexGrad" x1="0" y1="0" x2="60" y2="60">
+                                            <stop offset="0%" stop-color="#22d3ee"/>
+                                            <stop offset="100%" stop-color="#3b82f6"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Our Services</span>
+                <h2 class="section-title">What We <span class="gradient-text">Deliver</span></h2>
+                <p class="section-text">End-to-end blockchain, web and mobile solutions tailored to your business needs.</p>
+            </div>
+
+            <div class="services-grid" id="servicesGrid"><!-- Rendered from SITE_DATA.services --></div>
+        </div>
+    </section>
+
+    <!-- Clients / Customers Section -->
+    <section id="clients" class="clients">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Our Clients</span>
+                <h2 class="section-title">Trusted by <span class="gradient-text">Industry Leaders</span></h2>
+                <p class="section-text">Companies and innovators we've helped bring to the blockchain.</p>
+            </div>
+
+            <div class="clients-grid" id="clientsGrid"><!-- Rendered from SITE_DATA.clients --></div>
+
+            <div class="testimonial reveal" id="testimonialBlock"><!-- Rendered from SITE_DATA.testimonial --></div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Contact Us</span>
+                <h2 class="section-title">Let's Build the <span class="gradient-text">Future</span> Together</h2>
+                <p class="section-text">Ready to start your blockchain journey? Meet our leadership and get in touch.</p>
+            </div>
+
+            <div class="leadership-grid" id="leadershipGrid"><!-- Rendered from SITE_DATA.leadership --></div>
+
+            <div class="contact-form-section" id="get-in-touch">
+                <div class="contact-form-wrap reveal">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" required>
+                                <label for="name">Your Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" required>
+                                <label for="email">Email Address</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" required>
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Send Message <span>→</span>
+                        </button>
+                    </form>
+
+                    <div class="contact-info" id="contactInfo"><!-- Rendered from SITE_DATA.contact --></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo">
+                        <div class="logo-mark">
+                            <img src="logo.png" alt="TheHash.io Logo" class="logo-img logo-dark">
+                            <img src="logo-light.png" alt="TheHash.io Logo" class="logo-img logo-light">
+                        </div>
+                    </a>
+                    <p id="footerTagline">Building the decentralized future, one block at a time.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#clients">Clients</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col" id="footerServicesCol">
+                    <h4>Services</h4>
+                    <!-- Top 5 services rendered from data -->
+                </div>
+                <div class="footer-col" id="footerConnectCol">
+                    <h4>Connect</h4>
+                    <!-- Rendered from contact data -->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p id="footerCopyright">&copy; 2026 TheHash.io — Founded by Mudaser Iqbal. All rights reserved.</p>
+                <a href="admin.html" class="footer-admin-link" aria-label="Admin Panel" title="Admin Panel">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="3"/>
+                        <path d="M5 21v-2a4 4 0 014-4h6a4 4 0 014 4v2"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
