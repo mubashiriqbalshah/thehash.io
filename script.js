@@ -619,10 +619,28 @@ if (contactForm) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = 'Sending...';
 
+        const submittedAt = new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Karachi',
+            year: 'numeric', month: 'short', day: 'numeric',
+            hour: '2-digit', minute: '2-digit', hour12: true
+        }) + ' (PKT)';
+
         try {
             if ((provider === 'formspree' || provider === 'web3forms') && endpoint) {
                 const body = provider === 'web3forms'
-                    ? { access_key: endpoint, ...payload, from_name: payload.name, ...(ccEmails ? { cc: ccEmails } : {}) }
+                    ? {
+                        access_key: endpoint,
+                        subject: `New Inquiry: ${payload.subject} — TheHash.io`,
+                        from_name: `${payload.name} via TheHash.io`,
+                        replyto: payload.email,
+                        Name: payload.name,
+                        Email: payload.email,
+                        'Subject Line': payload.subject,
+                        Message: payload.message,
+                        'Submitted On': submittedAt,
+                        Source: 'thehash.io contact form',
+                        ...(ccEmails ? { cc: ccEmails } : {})
+                      }
                     : payload;
                 const url = provider === 'web3forms' ? 'https://api.web3forms.com/submit' : endpoint;
                 const res = await fetch(url, {
@@ -638,8 +656,23 @@ if (contactForm) {
             } else {
                 // Mailto: open user's email client with pre-filled message
                 // Use raw comma-separated emails (don't URL-encode the To list)
-                const bodyText = `Name: ${payload.name}\nEmail: ${payload.email}\n\n${payload.message}`;
-                const mailto = `mailto:${targetEmail}?subject=${encodeURIComponent(payload.subject)}&body=${encodeURIComponent(bodyText)}`;
+                const bodyText =
+`Hello TheHash.io team,
+
+A new inquiry has been submitted through the website.
+
+— Name: ${payload.name}
+— Email: ${payload.email}
+— Subject: ${payload.subject}
+— Submitted: ${submittedAt}
+
+Message:
+${payload.message}
+
+—
+Sent from thehash.io contact form`;
+                const subj = `New Inquiry: ${payload.subject} — TheHash.io`;
+                const mailto = `mailto:${targetEmail}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(bodyText)}`;
                 window.location.href = mailto;
                 setBanner('✓ Message sent successfully! Opening your email app — please hit Send to deliver.', 'success');
                 contactForm.reset();
