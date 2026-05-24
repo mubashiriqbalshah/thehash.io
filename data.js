@@ -87,8 +87,8 @@ const DEFAULT_DATA = {
             role: 'Founder & Entrepreneur',
             bio: 'Visionary leader driving blockchain innovation at TheHash.io. Passionate about building decentralized solutions that empower businesses worldwide.',
             email: 'mudaseriqbal@gmail.com',
-            linkedin: '#',
-            twitter: '#',
+            linkedin: 'https://www.linkedin.com/in/mudaseriqbal/',
+            twitter: 'https://x.com/TheHash17',
             colorVariant: 'cyan'
         },
         {
@@ -98,8 +98,8 @@ const DEFAULT_DATA = {
             role: 'Director',
             bio: 'Strategic director leading operations and growth at TheHash.io. Bridging technology and business to deliver world-class blockchain solutions.',
             email: 'mubashir2009@gmail.com',
-            linkedin: '#',
-            twitter: '#',
+            linkedin: 'https://www.linkedin.com/in/mubashiriqbalshah',
+            twitter: 'https://x.com/mubashir7911',
             colorVariant: 'purple'
         }
     ],
