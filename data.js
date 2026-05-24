@@ -4,6 +4,7 @@
 
 const STORAGE_KEY = 'thehash-site-data';
 
+/* DEFAULT_DATA_START — do not edit these markers, the live publish API replaces between them */
 const DEFAULT_DATA = {
     slides: [
         {
@@ -116,6 +117,7 @@ const DEFAULT_DATA = {
         copyright: '© 2026 TheHash.io — Founded by Mudaser Iqbal. All rights reserved.'
     }
 };
+/* DEFAULT_DATA_END */
 
 // ============ Icon library (used by services) ============
 const ICON_LIBRARY = {

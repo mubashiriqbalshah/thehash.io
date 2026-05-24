@@ -86,10 +86,26 @@ function showToast(msg, type = 'success') {
 }
 
 // ============ Data save ============
-function saveData() {
-    const ok = SITE_DATA_API.save(window.SITE_DATA);
-    if (ok) showToast('Saved successfully');
-    else showToast('Save failed', 'error');
+async function saveData() {
+    const localOk = SITE_DATA_API.save(window.SITE_DATA);
+    if (!localOk) return showToast('Local save failed', 'error');
+    showToast('Saved locally — publishing to live...', 'info');
+    try {
+        const resp = await fetch('/api/save-data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: window.SITE_DATA, password: getStoredPassword() })
+        });
+        let result = {};
+        try { result = await resp.json(); } catch {}
+        if (resp.ok) {
+            showToast('Published! Live in ~1 min', 'success');
+        } else {
+            showToast('Live publish failed: ' + (result.error || resp.status) + ' (local copy saved)', 'error');
+        }
+    } catch (e) {
+        showToast('Live publish failed: ' + e.message + ' (local copy saved)', 'error');
+    }
 }
 
 // ============ Helpers ============
