@@ -87,7 +87,7 @@ const DEFAULT_DATA = {
             role: 'Founder & Entrepreneur',
             bio: 'Visionary leader driving blockchain innovation at TheHash.io. Passionate about building decentralized solutions that empower businesses worldwide.',
             email: 'mudaseriqbal@gmail.com',
-            linkedin: 'https://www.linkedin.com/in/mudaseriqbal/',
+            linkedin: 'https://www.linkedin.com/in/mudaseriqbal',
             twitter: 'https://x.com/TheHash17',
             colorVariant: 'cyan'
         },
