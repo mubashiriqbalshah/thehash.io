@@ -153,9 +153,9 @@ function renderLeadership() {
             <span class="founder-role">${escapeHtml(p.role || '')}</span>
             <p class="founder-bio">${escapeHtml(p.bio || '')}</p>
             <div class="founder-links">
-                <a href="mailto:${escapeAttr(p.email || '')}" class="founder-link" aria-label="Email">${socialSvg.email}</a>
-                <a href="${escapeAttr(p.linkedin || '#')}" class="founder-link" aria-label="LinkedIn" target="_blank" rel="noopener">${socialSvg.linkedin}</a>
-                <a href="${escapeAttr(p.twitter || '#')}" class="founder-link" aria-label="Twitter" target="_blank" rel="noopener">${socialSvg.twitter}</a>
+                ${p.email ? `<a href="mailto:${escapeAttr(p.email)}" class="founder-link" aria-label="Email">${socialSvg.email}</a>` : ''}
+                ${p.linkedin && p.linkedin !== '#' ? `<a href="${escapeAttr(p.linkedin)}" class="founder-link" aria-label="LinkedIn" target="_blank" rel="noopener">${socialSvg.linkedin}</a>` : ''}
+                ${p.twitter && p.twitter !== '#' ? `<a href="${escapeAttr(p.twitter)}" class="founder-link" aria-label="Twitter" target="_blank" rel="noopener">${socialSvg.twitter}</a>` : ''}
             </div>
         </div>`;
     }).join('');
